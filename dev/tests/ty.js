@@ -1,0 +1,16 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1312,height:740}});
+const errs=[];p.on('pageerror',e=>errs.push('PE '+e.message));
+await p.goto('http://localhost:8765/index.html');
+await p.evaluate(()=>{localStorage.clear();const keys=['zhar:0','luna:1','kapitan:0','tin:0','kometa:0','cosmo:0','iskra:2','drakosha:0','sonko:0'];const al={};keys.forEach(k=>al[k]=1);
+ localStorage.setItem('lyap_v5',JSON.stringify({lang:'uk',coins:900000,album:al,decor:{oak:1,sakura:1,fountain:1,bench:1,lamp:1,fl_ua:1,fl_nl:1,fl_fr:1,maple:1,swing:1,statue:1,palm:1},yd:{house:'h3',fence:'f2',ground:'g1'},yown:{h3:1,f2:1,g1:1},extra:1}))});
+await p.reload();await p.waitForTimeout(2600);
+await p.evaluate(()=>document.querySelectorAll('.overlay').forEach(o=>o.remove()));await p.waitForTimeout(300);
+await p.screenshot({path:'y2_menu.png'});
+await p.evaluate(()=>document.querySelector('#myardM').click());await p.waitForTimeout(800);await p.screenshot({path:'y2_yard.png'});
+await p.evaluate(()=>document.querySelector('#yMove').click());await p.waitForTimeout(500);
+const d=await p.$eval('.yardview .ydeco[data-d="fountain"]',e=>{const r=e.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height-10}});
+await p.mouse.move(d.x,d.y);await p.mouse.down();await p.mouse.move(640,700,{steps:8});await p.mouse.up();await p.waitForTimeout(500);
+await p.screenshot({path:'y2_edit.png'});
+console.log('cells',await p.evaluate(()=>localStorage.getItem('lyap_v5').match(/"cells":\{[^}]*\}/)?.[0]));
+console.log('ERR',JSON.stringify(errs));await b.close()})();

@@ -1,0 +1,21 @@
+/*UI_ART*/
+.btn{border:3px solid transparent;border-radius:999px;background:none!important;box-shadow:none!important;border-image:url(u/btn_y.webp) 160 182 160 182 fill / 24px 27px stretch;color:#4a2606;text-shadow:0 1px 0 rgba(255,240,190,.7);padding:0 30px;filter:drop-shadow(0 5px 0 rgba(20,10,4,.45)) drop-shadow(0 9px 10px rgba(0,0,0,.35))}
+.btn::before{display:none}
+.btn::after{top:12%;bottom:12%}
+.btn.pink{border-image-source:url(u/btn_p.webp);color:#fff;text-shadow:0 2px 0 #7a1240}
+.btn.blue{border-image-source:url(u/btn_b.webp);color:#fff;text-shadow:0 2px 0 #0d4677}
+.btn.green{border-image-source:url(u/btn_g.webp);color:#fff;text-shadow:0 2px 0 #0b5a2e}
+.btn.ghost{border-image-source:url(u/btn_d.webp);color:#eef0ff;text-shadow:0 2px 0 #0d0f2a}
+.btn.small{border-radius:999px;padding:0 20px;border-image-width:21px 24px}
+.btn:active{transform:translateY(4px) scale(.98);filter:drop-shadow(0 1px 0 rgba(20,10,4,.45)) drop-shadow(0 3px 5px rgba(0,0,0,.35))}
+.btn[disabled]{filter:grayscale(.9) brightness(.62)}
+#menu .playbtn{border-width:4px;border-image-width:40px 46px;padding:0 70px;box-shadow:none!important}
+.panel,.modal{border:4px solid transparent;border-radius:16px;border-image:url(u/panel.webp) 275 292 294 301 / 52px 55px 56px 57px / 18px round;box-shadow:0 30px 70px rgba(0,0,0,.7)}
+.modal{padding:30px 36px}
+.modal>.close{top:-16px;right:-16px}
+.panel .close{top:6px;right:6px}
+.coin{background:url(u/coin.webp) center/contain no-repeat;border:0;border-radius:50%;box-shadow:none;filter:drop-shadow(0 2px 1px rgba(0,0,0,.45))}
+.coin::before,.coin::after{display:none}
+.desk{background:url(u/desk.webp) center/100% 100% no-repeat!important;border:0!important;border-radius:22px;box-shadow:0 40px 90px rgba(0,0,0,.7)!important}
+.desk::before,.desk::after{display:none}
+.dockbtn img.di{height:58px;width:auto;margin-top:-10px;filter:drop-shadow(0 4px 3px rgba(0,0,0,.5))}
