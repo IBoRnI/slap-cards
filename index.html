@@ -627,6 +627,24 @@ button:focus-visible{outline:3px solid var(--yel);outline-offset:3px}
 #snd img{filter:drop-shadow(0 3px 3px rgba(0,0,0,.5))}
 .arena.loc{background:linear-gradient(180deg,rgba(10,10,30,.05),rgba(10,10,30,.35)),var(--locbg) center/cover no-repeat}
 .arena.loc .lamp,.arena.loc .beam{display:none}
+/*TOPBAR2*/
+.ttl2{display:inline-flex;align-items:center;padding:2px 13px 3px;font:900 11.5px var(--f-display);letter-spacing:.2px;color:#2a1606;white-space:nowrap;line-height:1.2;
+ background:linear-gradient(180deg,color-mix(in srgb,var(--tc) 55%,#fff) 0%,var(--tc) 48%,color-mix(in srgb,var(--tc) 72%,#000) 100%);
+ clip-path:polygon(0 0,100% 0,calc(100% - 7px) 50%,100% 100%,0 100%,7px 50%);text-shadow:0 1px 0 rgba(255,255,255,.45)}
+.prof{position:relative;display:flex;align-items:center;gap:10px;height:56px;padding:0 16px 0 0;border-radius:30px;background:linear-gradient(180deg,rgba(43,48,108,.96),rgba(22,25,62,.96));border:2px solid #0b0c22;box-shadow:inset 0 0 0 2px rgba(233,178,28,.45),inset 0 2px 0 rgba(255,255,255,.12),0 4px 0 #07081a,0 8px 14px rgba(0,0,0,.35)}
+.prof .av{margin-left:-6px;border:3px solid #ffd84a!important;box-shadow:0 0 0 2px #5a3a07,0 0 0 4px rgba(255,216,74,.35),0 4px 8px rgba(0,0,0,.5)}
+.pinfo{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.plg{display:flex;align-items:center;gap:5px;font:800 12px var(--f-body);color:#fff}
+.plg b{font:900 12.5px var(--f-display)}.plg small{font:700 11px var(--f-body);color:var(--muted)}
+.plg .lbadge{font-size:10px}
+.coinp{height:50px;padding:0 18px 0 6px;font:900 21px var(--f-display)!important}
+.coinp .coin{width:40px;height:40px;margin-left:-10px}
+.nums{gap:12px}
+.num3{height:50px;padding:0 16px 0 4px;gap:8px;border:2px solid #0b0c22;border-radius:26px;background:linear-gradient(180deg,rgba(43,48,108,.96),rgba(22,25,62,.96));box-shadow:inset 0 0 0 2px rgba(233,178,28,.35),inset 0 2px 0 rgba(255,255,255,.12),0 4px 0 #07081a,0 8px 14px rgba(0,0,0,.35)}
+.num3 .ic{width:40px;height:40px;margin-left:-12px}
+.num3 .ic img{width:40px!important;height:40px!important;filter:drop-shadow(0 3px 2px rgba(0,0,0,.5))}
+.num3>span:last-child{font:900 20px var(--f-display);color:#fff;text-shadow:0 2px 0 #07081a;line-height:1}
+.num3 small{font:800 9.5px var(--f-body);text-transform:uppercase;letter-spacing:.6px;color:#c9c4ff;margin-top:3px;text-shadow:none}
 /*UI_ART*/
 .btn{border:3px solid transparent;border-radius:999px;background:none!important;box-shadow:none!important;border-image:url(u/btn_y.webp) 160 182 160 182 fill / 24px 27px stretch;color:#4a2606;text-shadow:0 1px 0 rgba(255,240,190,.7);padding:0 30px;filter:drop-shadow(0 5px 0 rgba(20,10,4,.45)) drop-shadow(0 9px 10px rgba(0,0,0,.35))}
 .btn::before{display:none}
@@ -1198,7 +1216,7 @@ function titlesOwned(){const t=[{id:'new',n:'Новачок',c:'#a9acd6'}];
   if(S.rec.best>=30)t.push({id:'serie',n:'Майстер серії',c:'#FFCF2E'});
   return t}
 function myTitle(){const l=titlesOwned();return l.find(x=>x.id===S.title)||l[l.length-1]}
-const ttl=t=>`<span style="display:inline-block;padding:1px 8px;border-radius:8px;font:800 11px var(--f-body);color:var(--ink);background:${t.c}">${t.n}</span>`;
+const ttl=t=>`<span class="ttl2" style="--tc:${t.c}">${t.n}</span>`;
 const NUMIC={serie:'<img src="u/i_bolt.webp" alt="" width="26" height="26" style="object-fit:contain">',stack:'<img src="u/i_stack.webp" alt="" width="26" height="26" style="object-fit:contain">',coll:'<img src="u/i_star.webp" alt="" width="26" height="26" style="object-fit:contain">'};
 
 // =====================================================================
@@ -1304,7 +1322,7 @@ function numsHTML(){return `<div class="nums">
   <div class="num3" title="Рекорд серії цього тижня"><span class="ic">${NUMIC.serie}</span><span>${recWeek()}<small>рекорд серії</small></span></div>
   <div class="num3" title="Дублікати, якими граєш"><span class="ic">${NUMIC.stack}</span><span>${stackN()}<small>стопка</small></span></div>
   <div class="num3" title="Цінність колекції"><span class="ic">${NUMIC.coll}</span><span>${fmt(collValue())}<small>колекція</small></span></div></div>`}
-function topbar(){return `<div class="topbar"><button class="pill" id="meP" style="padding:0 12px 0 4px">${avaHTML(S.ava,FRAMES[S.equip.frame].c,38)}<span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.1">${ttl(myTitle())}</span></button><div class="pill">${coin()}<span id="coins">${fmt(S.coins)}</span></div>${numsHTML()}<div class="spacer"></div>
+function topbar(){return `<div class="topbar"><button class="prof" id="meP">${avaHTML(S.ava,FRAMES[S.equip.frame].c,58)}<span class="pinfo">${ttl(myTitle())}<span class="plg">${lbadge(league(),20)}<b>${LEAGUES[league()].name}</b></span></span></button><div class="pill coinp">${coin()}<span id="coins">${fmt(S.coins)}</span></div>${numsHTML()}<div class="spacer"></div>
   <button class="iconbtn" id="snd" aria-label="Налаштування"><img src="u/i_gear.webp" alt="" style="width:40px;height:40px"></button></div>`}
 function settingsModal(back){const HL=autoHint();
   const row=(id,label,sub,on)=>`<div class="quest"><div class="grow"><b>${label}</b>${sub?`<div class="sub">${sub}</div>`:''}</div><button class="tgl ${on?'on':''}" id="${id}" aria-pressed="${on}"><i></i></button></div>`;
